@@ -43,13 +43,15 @@ async def analyze_face(file: UploadFile = File(...)):
 
     landmarks = results.multi_face_landmarks[0].landmark
 
-    mouth_width = distance(landmarks[61], landmarks[291])
+    # mouth_width = distance(landmarks[61], landmarks[291])
+    mouth_width = distance(landmarks[78], landmarks[308])   # FIXED
     nose_width = distance(landmarks[94], landmarks[331])
     left_eye_width = distance(landmarks[33], landmarks[133])
     right_eye_width = distance(landmarks[362], landmarks[263])
     eye_spacing = distance(landmarks[133], landmarks[362])
     face_width = distance(landmarks[234], landmarks[454])
-    face_height = distance(landmarks[10], landmarks[152])
+    # face_height = distance(landmarks[10], landmarks[152])
+    face_height = distance(landmarks[9], landmarks[152])    # FIXED
 
     if face_width == 0 or nose_width == 0:
         return {"error": "Face landmarks not reliable"}
